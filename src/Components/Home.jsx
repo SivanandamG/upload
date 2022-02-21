@@ -7,10 +7,10 @@ export default function Home (){
      useEffect(()=>{
           fetch(`https://fast-reef-22226.herokuapp.com/data`)
           .then(res=>res.json())
-          .then((res)=>{ const data = add_data(res);dispatch(data)});
+          .then((res)=>{ dispatch(add_data(res))});
      },[]);
      const handleSearch = (e)=>{
-          if(e.key == "enter"){
+          if(e.key === "enter"){
                // e.pre
                console.log(search);
           }

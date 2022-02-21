@@ -9,17 +9,18 @@ export default function Results (){
      const [v,setv] = useState(q);
      useEffect(()=>{
           var s = [];
-          fetch(`https://fast-reef-22226.herokuapp.com/data`).then(res=>res.json()).then((res)=>{setd(res);res.map((a)=>{if(a.title.startsWith(q)){
+          fetch(`https://fast-reef-22226.herokuapp.com/data`).then(res=>res.json()).then((res)=>{setd(res);return res.map((a)=>{ if(a.title.startsWith(q)){
                s.push(a);
-               setSearch(s);
-          }})});
-     },[]);
+              return setSearch(s);
+               // return;
+          }return;})});
+     },[q]);
      function sortbyaz(){
           search.sort(function(a, b) {
-               if (a.author < a.author) {
+               if (a.author < b.author) {
                  return -1;
                }
-               if (a.author > a.author) {
+               if (a.author > b.author) {
                  return 1;
                }
                return 0;
